@@ -1,0 +1,23 @@
+# Python virtual environment
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE files
+.idea/
+.vscode/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Python env config
+pyvenv.cfg
+
+# Logs
+*.log
