@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🏡 Bangalore House Price Prediction
 
 A full-stack machine learning web application that predicts Bangalore house prices based on location, square footage, BHK, and bathrooms — built with Python, Scikit-learn, Flask, HTML, CSS, JavaScript, and jQuery.
@@ -159,11 +160,74 @@ Endpoints:
 #### GET `/get_location_names`
 
 Returns all available Bangalore locations.
+=======
+# Bangalore House Price Prediction
+
+A small web app for predicting Bangalore house prices using a trained machine learning model. The frontend is a static HTML/CSS/JavaScript page in `client/`, while the backend is a Flask API in `server/` that loads a saved model and returns predictions.
+
+## Project Structure
+
+- `client/`
+  - `app.html` - frontend user interface for entering area, BHK, bathroom count, and location.
+  - `app.js` - JavaScript logic that loads location names and calls the Flask prediction API.
+  - `app.css` - styles for the prediction form.
+- `server/`
+  - `server.py` - Flask server with endpoints to get locations and predict prices.
+  - `util.py` - loads saved model artifacts and computes price estimates.
+  - `artifacts/`
+    - `bangalore_home_prices_model_pickle` - trained ML model used for predictions.
+    - `columns.json` - feature column order used by the model.
+- `Bengaluru_House_Data.csv` - dataset used for model training and exploration.
+- `ml.ipynb` - notebook for data cleaning, feature engineering, model training, and evaluation.
+- `client-screenshot.png` - screenshot of the app UI.
+
+## Screenshot
+
+![App screenshot](client-screenshot.png)
+
+## How to Run Locally
+
+1. Open a terminal in the project folder.
+2. Activate your Python environment. For example:
+
+```powershell
+cd "c:\Users\Administrator\Desktop\Projects and stuff\blrhouseprediction"
+venv\Scripts\Activate.ps1
+```
+
+3. Install the required Python packages:
+
+```powershell
+pip install -r requirements.txt
+```
+
+4. Start the Flask server:
+
+```powershell
+python server\server.py
+```
+
+5. Open `client\app.html` in your browser.
+
+6. Use the form to enter:
+   - Area in square feet
+   - BHK value
+   - Bathroom count
+   - Location
+
+7. Click **Estimate Price**.
+
+## API Endpoints
+
+- `GET /get_location_names` - returns a JSON array of supported Bangalore locations.
+- `POST /predict_home_price` - accepts form data (`total_sqft`, `bhk`, `bath`, `location`) and returns an estimated price.
+>>>>>>> daa9a0c (updated readme)
 
 Example response:
 
 ```json
 {
+<<<<<<< HEAD
   "locations": [
     "1st phase jp nagar",
     "electronic city",
@@ -281,3 +345,37 @@ This project helped strengthen understanding of:
 - serving trained machine learning models
 
 ---
+=======
+  "estimated_price": 82.72
+}
+```
+
+## Model and Efficiency
+
+- The prediction backend uses a pre-trained model loaded once at startup from `server/artifacts/bangalore_home_prices_model_pickle`.
+- Location names are loaded from `server/artifacts/columns.json` and served directly to the frontend.
+- Prediction requests are efficient because they only require a small feature vector and a single model inference.
+- The app is designed for fast local use, with no database or server-side training during runtime.
+
+## Notes and Improvements
+
+- The app currently uses `jQuery` in the frontend and static HTML, which is simple and easy to maintain.
+- To improve efficiency further:
+  - host the backend with `gunicorn` or another production server instead of Flask's built-in server;
+  - validate frontend input before sending requests;
+  - add error handling for invalid or missing values;
+  - extend the model with more features or additional preprocessing.
+
+## Dependencies
+
+- Flask
+- numpy
+- scikit-learn
+- pandas (for the notebook)
+- matplotlib (for the notebook)
+
+## Notes
+
+- The notebook `ml.ipynb` contains the data cleaning and model-building workflow for Bangalore housing data.
+- Model accuracy and deployment can be improved by adding cross-validation, better feature handling, and more location data.
+>>>>>>> daa9a0c (updated readme)
